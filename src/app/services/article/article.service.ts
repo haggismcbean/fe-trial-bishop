@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable, forkJoin, merge, mergeMap } from 'rxjs';
 
 import * as _ from 'lodash';
+import * as moment from "moment";
 
 import { NewsApiService } from '../../services/news-api/news-api.service';
 
@@ -36,7 +37,18 @@ export class ArticleService {
 
     return forkJoin(subjects)
       .pipe(
-        map(allSubjects => _.flatten(allSubjects))
+        map(allSubjects => {
+          const flattenedSubjects = _.flatten(allSubjects);
+
+          flattenedSubjects.sort((articleA, articleB) => {
+            const dateArticleA = moment(articleA.publishedAt);
+            const dateArticleB = moment(articleB.publishedAt);
+
+            return dateArticleA.isBefore(dateArticleB) ? 1 : -1;
+          });
+
+          return flattenedSubjects;
+        })
       );
   }
 }
