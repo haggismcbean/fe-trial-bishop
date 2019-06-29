@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NewsApiService } from '../../services/news-api/news-api.service';
+
 @Component({
   selector: 'app-timeline',
   templateUrl: './timeline.component.html',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimelineComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private newsApiService: NewsApiService
+  ) { }
 
   ngOnInit() {
+    this.newsApiService
+        .getNews()
+        .subscribe((news) => {
+          console.log('news: ', news);
+        });
   }
 
 }
