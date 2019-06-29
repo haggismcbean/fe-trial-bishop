@@ -1,3 +1,15 @@
-<p>
-  article-summary works!
-</p>
+<div>
+  <div class="article-header">
+    <i class="starred"
+       [ngClass]="{'is-starred': article.isStarred}"></i>
+
+    <h2>{{article.title}}</h2>
+
+    <ul class="tags"
+        *ngFor="let tag of article.tags">
+      <li>{{tag}}</li>
+    </ul>
+    
+  </div>
+  <p>{{article.description}}</p>
+</div>

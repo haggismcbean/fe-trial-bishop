@@ -9,6 +9,8 @@ import { NewsApiService } from '../../services/news-api/news-api.service';
 })
 export class TimelineComponent implements OnInit {
 
+  public articles;
+
   constructor(
     private newsApiService: NewsApiService
   ) { }
@@ -16,8 +18,8 @@ export class TimelineComponent implements OnInit {
   ngOnInit() {
     this.newsApiService
         .getNews()
-        .subscribe((news) => {
-          console.log('news: ', news);
+        .subscribe((articles) => {
+          this.articles = articles;
         });
   }
 

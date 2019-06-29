@@ -1,2 +1,8 @@
-<div class="time-ago">7m ago</div>
-<app-article></app-article>
+<div *ngFor="let article of articles">
+	<span class="time-ago">
+		{{article.publishedAt}}
+	</span>
+
+	<app-article [article]="article">
+	</app-article>
+</div>
