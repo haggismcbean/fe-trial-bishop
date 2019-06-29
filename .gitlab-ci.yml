@@ -23,5 +23,4 @@ test:
   dependencies:
     - npm
   script:
-    - export CHROME_BIN=/usr/bin/chromium-browser
     - npm test
