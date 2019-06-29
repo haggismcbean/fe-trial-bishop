@@ -2,8 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ArticleSummaryComponent } from './components/article-summary/article-summary.component';
-import { ArticleBodyComponent } from './components/article-body/article-body.component';
+import { ArticleComponent } from './components/article/article.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { TagsSelectorComponent } from './components/tags-selector/tags-selector.component';
@@ -13,8 +12,7 @@ import { SavedCheckboxComponent } from './components/saved-checkbox/saved-checkb
 @NgModule({
   declarations: [
     AppComponent,
-    ArticleSummaryComponent,
-    ArticleBodyComponent,
+    ArticleComponent,
     TimelineComponent,
     MenuComponent,
     TagsSelectorComponent,
