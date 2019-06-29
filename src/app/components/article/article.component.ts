@@ -23,10 +23,9 @@ export class ArticleComponent implements OnInit {
   }
 
   public save(article) {
-    console.log('saving');
     this.store.dispatch({
-      type: '[Article] Save',
-      payload: <Article> article
+      type: '[Article] Save article',
+      payload: article
     });
   }
 }

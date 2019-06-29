@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable, forkJoin, merge } from 'rxjs';
 
 import * as _ from 'lodash';
-import * as moment from "moment";
+import * as moment from 'moment';
 
 import { NewsApiService } from '../../services/news-api/news-api.service';
 

@@ -26,40 +26,29 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.tags = _.keys(this.articleService.TAGS);
+
+    this.store.dispatch({
+      type: '[Menu] All articles'
+    });
   }
 
   public selectAllArticles() {
-    this.articleService
-        .getAll()
-        .subscribe(articles => {
-            this.store.dispatch({
-                type: '[Menu] All articles',
-                payload: <Article[]> articles
-            });
-        });
+    this.store.dispatch({
+      type: '[Menu] All articles'
+    });
   }
 
   public selectArticles(tag) {
-    this.articleService
-        .get(tag)
-        .subscribe(articles => {
-            this.store.dispatch({
-                type: '[Menu] Tagged articles',
-                payload: <Article[]> articles,
-                props: tag
-            });
-        });
+    this.store.dispatch({
+      type: '[Menu] Tagged articles',
+      payload: tag
+    });
   }
 
   public selectStarredArticles() {
-    // this.articleService
-    //     .getSaved()
-    //     .subscribe(articles => {
-    //         this.store.dispatch({
-    //             type: '[Menu] All articles',
-    //             payload: <Article[]> articles
-    //         });
-    //     });
+    this.store.dispatch({
+      type: '[Menu] Saved articles'
+    });
   }
 
 }

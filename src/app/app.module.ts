@@ -13,7 +13,7 @@ import { ArticleService } from './services/article/article.service';
 import { LocalStorageService } from './services/local-storage/local-storage.service';
 import { NewsApiService } from './services/news-api/news-api.service';
 
-// import { NewsEffects } from './effects/news.effects';
+import { ArticleEffects } from './state-management/effects/article.effects';
 
 import { menuReducer } from './state-management/reducers/news.reducers';
 
@@ -38,7 +38,7 @@ const services = [
     HttpClientModule,
     BrowserModule,
     StoreModule.forRoot({ articles: menuReducer }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([ArticleEffects])
   ],
   providers: [
     Store,

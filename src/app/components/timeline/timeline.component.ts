@@ -16,6 +16,7 @@ import { ArticleService } from '../../services/article/article.service';
 export class TimelineComponent implements OnInit {
 
   public articles$ = this.store.select(state => {
+    console.log(_.last(state.articles));
     return _.last(state.articles);
   });
 
@@ -26,14 +27,6 @@ export class TimelineComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.articleService
-      .getAll()
-      .subscribe(articles => {
-          this.store.dispatch({
-              type: '[Menu] All articles',
-              payload: <Article[]> articles
-          });
-      });
   }
 
 }
