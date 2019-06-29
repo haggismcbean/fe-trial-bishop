@@ -1,5 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { HttpClient, HttpHeaders, HttpHandler } from '@angular/common/http';
+import { Store, StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 
@@ -22,15 +23,26 @@ const components = [
   SavedCheckboxComponent
 ];
 
+const services = [
+  ArticleService,
+  LocalStorageService,
+  NewsApiService
+];
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        StoreModule.forRoot({})
+      ],
       declarations: [
         ...components
       ],
       providers: [
+        Store,
         HttpClient,
-        HttpHandler
+        HttpHandler,
+        ...services
       ]
     }).compileComponents();
   }));

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NewsApiService } from '../../services/news-api/news-api.service';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import * as TimelineActions from '../../actions/timeline/timeline.actions';
 
 @Component({
   selector: 'app-timeline',
@@ -9,20 +12,17 @@ import { NewsApiService } from '../../services/news-api/news-api.service';
 })
 export class TimelineComponent implements OnInit {
 
-  public articles;
+  public articles$: Observable<any[]> = this.store.select(state => {
+    console.log('state: ', state);
+    return state.articles;
+  }).subscribe();
 
   constructor(
-    private newsApiService: NewsApiService
+    private store: Store<{ articles: any[] }>
   ) { }
 
   ngOnInit() {
-    this.newsApiService
-        .getNews()
-        .subscribe((articles) => {
-          this.articles = articles;
-        }, (error) => {
-          console.log(error);
-        });
+    this.store.dispatch({ type: TimelineActions.loadNews });
   }
 
 }

@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient, HttpHeaders, HttpHandler } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { TimelineComponent } from './timeline.component';
 import { ArticleComponent } from '../article/article.component';
@@ -13,7 +15,7 @@ describe('TimelineComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ TimelineComponent, ArticleComponent ],
-      providers: [ NewsApiService, HttpClient, HttpHandler ]
+      providers: [ NewsApiService, HttpClient, HttpHandler, provideMockStore() ]
     })
     .compileComponents();
   }));
