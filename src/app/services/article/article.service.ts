@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Observable, forkJoin, merge, mergeMap } from 'rxjs';
 
 import * as _ from 'lodash';
 
@@ -18,7 +18,7 @@ export class ArticleService {
     sport: 'sport',
     business: 'business',
     tech: 'tech',
-    entertainment: 'entertainment',
+    bitcoin: 'bitcoin',
     world: 'world'
   };
 
@@ -29,8 +29,14 @@ export class ArticleService {
   ) { }
 
   getAll(): Observable<any[]> {
-    console.log('getting all!!');
-    return this.newsApiService
-        .getNewsAbout(null);
+    const subjects = _.reduce(this.TAGS, (subjectsArray, tag) => {
+      subjectsArray.push(this.newsApiService.getNewsAbout(tag));
+      return subjectsArray;
+    }, []);
+
+    return forkJoin(subjects)
+      .pipe(
+        map(allSubjects => _.flatten(allSubjects))
+      );
   }
 }

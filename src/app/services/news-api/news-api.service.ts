@@ -14,13 +14,19 @@ export class NewsApiService {
     private http: HttpClient
   ) { }
 
-  public getNewsAbout(topic) {
-    const url = `https://newsapi.org/v2/top-headlines?country=de&apiKey=` + this.API_KEY;
+  public getNewsAbout(tag) {
+    const url = `https://newsapi.org/v2/top-headlines?q=${tag}&apiKey=` + this.API_KEY;
 
     return this.http
       .get<any>(url)
       .pipe(
-        map(data => data.articles)
+        map(data => {
+          _.forEach(data.articles, (article) => {
+            article.tag = tag;
+          });
+
+          return data.articles;
+        })
       );
   }
 }
