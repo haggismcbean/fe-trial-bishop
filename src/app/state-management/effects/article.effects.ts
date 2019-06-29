@@ -22,11 +22,14 @@ export class ArticleEffects {
   @Effect()
   getAllArticles$: Observable<Action> = this.actions$.pipe(
     ofType('[Menu] All articles'),
-    mergeMap(article => {
+    mergeMap(event => {
       return this.articleService
           .getAll()
           .pipe(
-            map(articles => ({ type: '[News API] Article load success', payload: articles }))
+            map(articles => ({
+              type: '[News API] Article load success',
+              payload: articles
+            }))
           );
       }
     )
@@ -35,11 +38,14 @@ export class ArticleEffects {
   @Effect()
   getTaggedArticles$: Observable<Action> = this.actions$.pipe(
     ofType('[Menu] Tagged articles'),
-    mergeMap((article: any) => {
+    mergeMap((event: any) => {
       return this.articleService
-          .get(article.payload)
+          .get(event.payload)
           .pipe(
-            map(articles => ({ type: '[News API] Article load success', payload: articles }))
+            map(articles => ({
+              type: '[News API] Article load success',
+              payload: articles
+            }))
           );
       }
     )
@@ -48,11 +54,14 @@ export class ArticleEffects {
   @Effect()
   getSavedArticles$: Observable<Action> = this.actions$.pipe(
     ofType('[Menu] Saved articles'),
-    mergeMap((article: any) => {
+    mergeMap((event: any) => {
       return this.localStorageService
           .getSavedArticles()
           .pipe(
-            map(articles => ({ type: '[Local Storage] Article load success', payload: articles }))
+            map(articles => ({
+              type: '[Local Storage] Article load success',
+              payload: articles
+            }))
           );
       }
     )
@@ -61,11 +70,30 @@ export class ArticleEffects {
   @Effect()
   savedArticle$: Observable<Action> = this.actions$.pipe(
     ofType('[Article] Save article'),
-    mergeMap((article: any) => {
+    mergeMap((event: any) => {
       return this.localStorageService
-          .saveArticle(article.payload)
+          .saveArticle(event.payload)
           .pipe(
-            map(articles => ({ type: '[Local Storage] Article save success', payload: articles }))
+            map(articles => ({
+              type: '[Local Storage] Article save success',
+              payload: { articles }
+            }))
+          );
+      }
+    )
+  );
+
+  @Effect()
+  savedArticle$: Observable<Action> = this.actions$.pipe(
+    ofType('[Article] Unsave article'),
+    mergeMap((event: any) => {
+      return this.localStorageService
+          .unsaveArticle(event.payload)
+          .pipe(
+            map(articles => ({
+              type: '[Local Storage] Article unsave success',
+              payload: { articles }
+            }))
           );
       }
     )

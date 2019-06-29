@@ -15,32 +15,53 @@ export class LocalStorageService {
   }
 
   public saveArticle(article) {
+    // TODO - validate url
+
     return this.getSavedArticles()
-        .pipe(
-            map((articles) => {
-                if (!articles) {
-                    articles = [];
-                }
+      .pipe(
+        map((articles) => {
+          if (!articles) {
+              articles = [];
+          }
 
-                articles.push(article);
-                localStorage.setItem('articles', JSON.stringify(articles));
+          articles.push(article);
 
-                return articles;
-            });
-        )
+          console.log('new articles: ', articles);
+          localStorage.setItem('articles', JSON.stringify(articles));
+
+          return articles;
+        })
+      );
+  }
+
+  public unsaveArticle(article) {
+    return this.getSavedArticles()
+      .pipe(
+        map((savedArticles) => {
+          if (!savedArticles) {
+            savedArticles = [];
+          }
+
+          _.remove(savedArticles, (savedArticle) => {
+            return savedArticle.url === article.url;
+          });
+
+          return savedArticles;
+        })
+      );
   }
 
   public getSavedArticles(): Observable<any[]> {
     const savedArticles = JSON.parse(localStorage.getItem('articles'));
     return of(savedArticles)
-        .pipe(
-            map(articles => {
-                _.forEach(articles, article => {
-                    article.publishedAt = moment(article.publishedAt);
-                });
+      .pipe(
+        map(articles => {
+          _.forEach(articles, article => {
+              article.publishedAt = moment(article.publishedAt);
+          });
 
-                return articles;
-            })
-        );
+          return articles;
+        })
+      );
   }
 }

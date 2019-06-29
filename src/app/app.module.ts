@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { ArticleComponent } from './components/article/article.component';
@@ -15,7 +17,8 @@ import { NewsApiService } from './services/news-api/news-api.service';
 
 import { ArticleEffects } from './state-management/effects/article.effects';
 
-import { menuReducer } from './state-management/reducers/news.reducers';
+import { menuReducer } from './state-management/reducers/news.reducer';
+import { savedArticlesReducer } from './state-management/reducers/saved-articles.reducer';
 
 const components = [
   AppComponent,
@@ -37,7 +40,9 @@ const services = [
   imports: [
     HttpClientModule,
     BrowserModule,
-    StoreModule.forRoot({ articles: menuReducer }),
+    FormsModule,
+    CommonModule,
+    StoreModule.forRoot({ articles: menuReducer, savedArticles: savedArticlesReducer }),
     EffectsModule.forRoot([ArticleEffects])
   ],
   providers: [

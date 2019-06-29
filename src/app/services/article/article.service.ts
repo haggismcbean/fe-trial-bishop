@@ -47,7 +47,6 @@ export class ArticleService {
             return articleA.publishedAt.isBefore(articleB.publishedAt) ? 1 : -1;
           });
 
-
           return flattenedSubjects;
         })
       );

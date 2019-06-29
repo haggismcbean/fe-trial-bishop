@@ -11,3 +11,7 @@
 .article__title {
   flex-grow: 1;
 }
+
+.article__save--is-saved {
+  background: red !important;
+}
