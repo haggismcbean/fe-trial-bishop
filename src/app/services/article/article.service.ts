@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable, forkJoin, merge, mergeMap } from 'rxjs';
+import { Observable, forkJoin, merge } from 'rxjs';
 
 import * as _ from 'lodash';
 import * as moment from "moment";
@@ -51,5 +51,26 @@ export class ArticleService {
           return flattenedSubjects;
         })
       );
+  }
+
+  get(tag): Observable<any[]> {
+    return this.newsApiService.getNewsAbout(tag)
+      .pipe(
+          map(subjects => {
+            subjects.sort((articleA, articleB) => {
+              articleA.publishedAt = moment(articleA.publishedAt);
+              articleB.publishedAt = moment(articleB.publishedAt);
+
+              return articleA.publishedAt.isBefore(articleB.publishedAt) ? 1 : -1;
+            });
+
+
+            return subjects;
+          })
+        );
+  }
+
+  getSaved(): Observable<any[]> {
+    // TODO
   }
 }

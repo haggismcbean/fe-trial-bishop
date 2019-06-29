@@ -15,9 +15,9 @@ import { ArticleService } from './services/article/article.service';
 import { LocalStorageService } from './services/local-storage/local-storage.service';
 import { NewsApiService } from './services/news-api/news-api.service';
 
-import { NewsEffects } from './effects/news.effects';
+// import { NewsEffects } from './effects/news.effects';
 
-import * as NewsReducer from './reducers/news.reducer';
+import { menuReducer } from './state-management/reducers/news.reducers';
 
 const components = [
   AppComponent,
@@ -41,8 +41,8 @@ const services = [
   imports: [
     HttpClientModule,
     BrowserModule,
-    StoreModule.forRoot({ articles: NewsReducer.reducer }),
-    EffectsModule.forRoot([NewsEffects])
+    StoreModule.forRoot({ articles: menuReducer }),
+    EffectsModule.forRoot([])
   ],
   providers: [
     Store,
