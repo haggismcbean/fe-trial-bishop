@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class LocalStorageService {
   }
 
   public getSavedArticles() {
-    return JSON.parse(localStorage.getItem('articles'));
+    return of(['test']);
+    // return JSON.parse(localStorage.getItem('articles'));
   }
 }

@@ -10,7 +10,8 @@ export function menuReducer(state: Article[] = [], action) {
     case '[Menu] Saved articles':
       return [...state, action.payload];
     case '[Article] Save':
-      return [...state, action.payload];
+      console.log('so... something was saved?');
+      return [...state];
     default:
       return state;
   }

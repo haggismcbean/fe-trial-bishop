@@ -52,14 +52,14 @@ export class MenuComponent implements OnInit {
   }
 
   public selectStarredArticles() {
-    this.articleService
-        .getSaved()
-        .subscribe(articles => {
-            this.store.dispatch({
-                type: '[Menu] All articles',
-                payload: <Article[]> articles
-            });
-        });
+    // this.articleService
+    //     .getSaved()
+    //     .subscribe(articles => {
+    //         this.store.dispatch({
+    //             type: '[Menu] All articles',
+    //             payload: <Article[]> articles
+    //         });
+    //     });
   }
 
 }
