@@ -5,8 +5,6 @@ import * as _ from 'lodash';
 import { ArticleService } from '../../services/article/article.service';
 import { Store } from '@ngrx/store';
 
-import { allArticles, taggedArticles, savedArticles } from '../../state-management/actions/menu/menu.actions';
-
 import { AppState } from '../../app.state';
 import { Article } from '../../models/article.model';
 

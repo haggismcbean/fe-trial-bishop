@@ -30,9 +30,7 @@ export class ArticleComponent implements OnInit {
         return;
       }
 
-      this.isSaved = !!_.find(savedArticles.articles, { url: this.article.url });
-
-      console.log(this.isSaved);
+      this.isSaved = !!_.find(savedArticles, { url: this.article.url });
     });
   }
 
@@ -48,5 +46,9 @@ export class ArticleComponent implements OnInit {
       type: '[Article] Unsave article',
       payload: article
     });
+  }
+
+  public isArticleSaved() {
+    return this.isSaved;
   }
 }

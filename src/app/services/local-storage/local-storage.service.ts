@@ -45,6 +45,8 @@ export class LocalStorageService {
             return savedArticle.url === article.url;
           });
 
+          localStorage.setItem('articles', JSON.stringify(savedArticles));
+
           return savedArticles;
         })
       );

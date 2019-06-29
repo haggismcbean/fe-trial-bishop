@@ -5,8 +5,6 @@ import { Observable, EMPTY } from 'rxjs';
 import { map, mergeMap, switchMap, catchError } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
-import * as ArticleActions from '../actions/article/article.actions';
-
 import { ArticleService } from '../../services/article/article.service';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 
@@ -76,7 +74,7 @@ export class ArticleEffects {
           .pipe(
             map(articles => ({
               type: '[Local Storage] Article save success',
-              payload: { articles }
+              payload: articles
             }))
           );
       }
@@ -92,7 +90,7 @@ export class ArticleEffects {
           .pipe(
             map(articles => ({
               type: '[Local Storage] Article unsave success',
-              payload: { articles }
+              payload: articles
             }))
           );
       }
