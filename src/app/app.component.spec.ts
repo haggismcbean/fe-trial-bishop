@@ -1,27 +1,49 @@
 import { TestBed, async } from '@angular/core/testing';
+import { HttpClient, HttpHeaders, HttpHandler } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
+
+import { ArticleComponent } from './components/article/article.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { TagsSelectorComponent } from './components/tags-selector/tags-selector.component';
+import { SavedCheckboxComponent } from './components/saved-checkbox/saved-checkbox.component';
+
+import { ArticleService } from './services/article/article.service';
+import { LocalStorageService } from './services/local-storage/local-storage.service';
+import { NewsApiService } from './services/news-api/news-api.service';
+
+const components = [
+  AppComponent,
+  ArticleComponent,
+  TimelineComponent,
+  MenuComponent,
+  TagsSelectorComponent,
+  SavedCheckboxComponent
+];
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        ...components
       ],
+      providers: [
+        HttpClient,
+        HttpHandler
+      ]
     }).compileComponents();
   }));
+
   it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
+
   it(`should have as title 'fe-trial-bishop'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('fe-trial-bishop');
-  }));
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to fe-trial-bishop!');
   }));
 });

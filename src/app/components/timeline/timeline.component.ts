@@ -20,6 +20,8 @@ export class TimelineComponent implements OnInit {
         .getNews()
         .subscribe((articles) => {
           this.articles = articles;
+        }, (error) => {
+          console.log(error);
         });
   }
 

@@ -10,6 +10,14 @@ export class NewsApiService {
 
   private API_KEY = 'ea6a2c26cb2f4d9f956c784934dd1e3f';
 
+  public TAGS = {
+    sport: 'sport',
+    business: 'business',
+    tech: 'tech',
+    entertainment: 'entertainment',
+    world: 'world'
+  };
+
   constructor(
     private http: HttpClient
   ) { }
