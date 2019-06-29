@@ -41,11 +41,12 @@ export class ArticleService {
           const flattenedSubjects = _.flatten(allSubjects);
 
           flattenedSubjects.sort((articleA, articleB) => {
-            const dateArticleA = moment(articleA.publishedAt);
-            const dateArticleB = moment(articleB.publishedAt);
+            articleA.publishedAt = moment(articleA.publishedAt);
+            articleB.publishedAt = moment(articleB.publishedAt);
 
-            return dateArticleA.isBefore(dateArticleB) ? 1 : -1;
+            return articleA.publishedAt.isBefore(articleB.publishedAt) ? 1 : -1;
           });
+
 
           return flattenedSubjects;
         })

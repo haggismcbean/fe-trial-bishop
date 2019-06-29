@@ -1,6 +1,6 @@
 <div *ngFor="let article of articles$ | async">
 	<span class="time-ago">
-		{{article.publishedAt}}
+		{{article.publishedAt.fromNow()}}
 	</span>
 
 	<app-article [article]="article">

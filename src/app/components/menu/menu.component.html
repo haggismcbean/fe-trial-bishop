@@ -1,4 +1,7 @@
 <ol>
-	<li>All</li>
-	<li>Starred</li>
+	<li (click)="selectAllArticles()">All</li>
+	<div *ngFor="let tag of tags">
+		<li (click)="selectArticles(tag)">{{tag}}</li>
+	</div>
+	<li (click)="selectStarredArticles()">Starred</li>
 </ol>
