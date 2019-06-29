@@ -1,0 +1,13 @@
+.article {
+  margin: 1em 0 2em;
+}
+
+.article__header {
+	display: flex;
+	flex-direction: row;
+  padding: 1em;
+}
+
+.article__title {
+  flex-grow: 1;
+}

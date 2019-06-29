@@ -1,14 +1,21 @@
-<div>
-  <div class="article-header">
-    <i class="starred"
-       [ngClass]="{'is-starred': article.isStarred}"></i>
+<div class="card article">
+  <div class="article__header">
+    <h3 class="article__title">
+      {{article.title}}
+    </h3>
 
-    <h2>{{article.title}}</h2>
-
-    <ul class="tags">
-      <li>{{article.tag}}</li>
-    </ul>
-    
+    <div class="article__tag-container">
+      <span class="article__tag badge badge-pill badge-primary">
+        {{article.tag}}
+      </span>
+    </div>
   </div>
-  <p>{{article.description}}</p>
+
+  <div class="card-body">
+    <p>{{article.description}}</p>
+  </div>
+
+  <div class="card-footer text-muted">
+    <button class="btn btn-primary">Save</button>
+  </div>
 </div>

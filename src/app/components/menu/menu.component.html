@@ -1,7 +1,18 @@
-<ol>
-	<li (click)="selectAllArticles()">All</li>
+<ol class="nav nav-pills flex-column">
+	<li class="nav-item"
+		(click)="selectAllArticles()">
+		<a class="nav-link" href="#">All</a>
+	</li>
+	
 	<div *ngFor="let tag of tags">
-		<li (click)="selectArticles(tag)">{{tag}}</li>
+		<li class="nav-item"
+		    (click)="selectArticles(tag)">
+			<a class="nav-link" href="#">{{tag}}</a>
+		</li>
 	</div>
-	<li (click)="selectStarredArticles()">Starred</li>
+
+	<li class="nav-item"
+		(click)="selectStarredArticles()">
+		<a class="nav-link" href="#">Starred</a>
+	</li>
 </ol>
