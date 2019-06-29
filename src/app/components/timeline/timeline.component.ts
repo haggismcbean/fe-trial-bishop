@@ -16,7 +16,9 @@ import { ArticleService } from '../../services/article/article.service';
 export class TimelineComponent implements OnInit {
 
   public articles$ = this.store.select(state => {
-    return _.last(state.articles);
+    if (state) {
+      return _.last(state.articles);
+    }
   });
 
   constructor(

@@ -84,7 +84,7 @@ export class ArticleEffects {
   );
 
   @Effect()
-  savedArticle$: Observable<Action> = this.actions$.pipe(
+  unsavedArticle$: Observable<Action> = this.actions$.pipe(
     ofType('[Article] Unsave article'),
     mergeMap((event: any) => {
       return this.localStorageService

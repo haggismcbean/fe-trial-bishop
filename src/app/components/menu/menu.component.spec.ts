@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClient, HttpHeaders, HttpHandler } from '@angular/common/http';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { MenuComponent } from './menu.component';
 
@@ -8,7 +10,8 @@ describe('MenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MenuComponent ]
+      declarations: [ MenuComponent ],
+      providers: [ HttpClient, HttpHandler, provideMockStore() ]
     })
     .compileComponents();
   }));
@@ -19,7 +22,7 @@ describe('MenuComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create errr', () => {
     expect(component).toBeTruthy();
   });
 });

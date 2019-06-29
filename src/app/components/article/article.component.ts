@@ -22,7 +22,9 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit() {
     this.store.select(state => {
-      return _.last(state.savedArticles);
+      if (state) {
+        return _.last(state.savedArticles);
+      }
     }).subscribe(savedArticles => {
       if (!savedArticles) {
         return;

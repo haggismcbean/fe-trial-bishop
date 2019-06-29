@@ -26,7 +26,6 @@ export class LocalStorageService {
 
           articles.push(article);
 
-          console.log('new articles: ', articles);
           localStorage.setItem('articles', JSON.stringify(articles));
 
           return articles;
