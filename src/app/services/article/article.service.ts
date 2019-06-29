@@ -70,7 +70,7 @@ export class ArticleService {
         );
   }
 
-  getSaved(): Observable<any[]> {
+  getSaved(): void {
     // TODO
   }
 }

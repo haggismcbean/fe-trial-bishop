@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Observable } from 'rxjs';
 import { AppState } from '../../app.state';
 import { Store } from '@ngrx/store';
 
+import * as _ from 'lodash';
+
+import { Article } from '../../models/article.model';
 import { ArticleService } from '../../services/article/article.service';
 
 @Component({

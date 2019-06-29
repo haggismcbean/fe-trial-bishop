@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.state';
 
 @Component({
   selector: 'app-article',
@@ -8,10 +10,18 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ArticleComponent implements OnInit {
   @Input() public article;
 
-  constructor() { }
+  constructor(
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit() {
-  	console.log('article: ', this.article);
   }
 
+  public save(article) {
+    console.log('saving');
+    this.store.dispatch({
+      type: '[Article] Save',
+      payload: <Article> article
+    });
+  }
 }
