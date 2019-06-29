@@ -18,9 +18,14 @@ npm:
     paths:
       - node_modules/
 
-test:
+variables:
+  CLI_VERSION: 6.2.1
+
+test:karma:
   stage: test
-  dependencies:
-    - npm
+  image: trion/ng-cli-karma:${CLI_VERSION}
+  allow_failure: false
   script:
-    - npm test
+  - ng test --progress false --watch false
+  tags:
+  - docker
