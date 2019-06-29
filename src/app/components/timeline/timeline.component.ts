@@ -18,13 +18,20 @@ export class TimelineComponent implements OnInit {
   });
 
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private articleService: ArticleService
   ) {
   }
 
   ngOnInit() {
-    // this.articles$ = this.articleService
-    //   .getAll();
+    this.articleService
+      .getAll()
+      .subscribe(articles => {
+          this.store.dispatch({
+              type: '[Menu] All articles',
+              payload: <Article[]> articles
+          });
+      });
   }
 
 }
