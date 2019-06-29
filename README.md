@@ -1,25 +1,27 @@
-### TRIAL
+# FeTrialBishop
 
-This trial consists of writing a simple angular 7 app.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
 
-### App Description
-Pulls articles from NEWS Api and displays available information on a timeline.
-Article links can be 'saved' to a collection which is stored persistently.
+## Development server
 
-Choose a particular topic of interest to narrow the selection of articles.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### Evaluation Criteria
+## Code scaffolding
 
-#### Core (85%)
-The app functions as expected from the description. It is composed of multiple components, services and css classes.
-Information is layed out in a readable and intuitive manner and some interactions are possible.
-Please include implementations of the following
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-* Responsive Design
-* Unit Tests
-* State Management
+## Build
 
-#### Bonus (15%)
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-* Provide a docker container which serves the app via docker-compose.
-* Configure a gitlab pipeline to run unit tests on commits
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
