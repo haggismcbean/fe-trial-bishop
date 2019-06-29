@@ -1,4 +1,4 @@
-<ol class="nav nav-pills flex-column">
+<ol class="nav nav-pills menu">
 	<li class="nav-item"
 		(click)="selectAllArticles()">
 		<a class="nav-link" href="#">All</a>
@@ -7,12 +7,12 @@
 	<div *ngFor="let tag of tags">
 		<li class="nav-item"
 		    (click)="selectArticles(tag)">
-			<a class="nav-link" href="#">{{tag}}</a>
+			<a class="nav-link menu__item" href="#">{{tag}}</a>
 		</li>
 	</div>
 
 	<li class="nav-item"
 		(click)="selectStarredArticles()">
-		<a class="nav-link" href="#">Starred</a>
+		<a class="nav-link" href="#">Saved</a>
 	</li>
 </ol>

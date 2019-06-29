@@ -1,0 +1,13 @@
+.menu__item {
+	text-transform: capitalize;
+}
+
+.menu {
+	flex-direction: row;
+}
+
+@media (min-width: 768px) {
+	.menu {
+		flex-direction: column;
+	}
+}
