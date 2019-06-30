@@ -40,12 +40,7 @@ export class ArticleService {
         map(allSubjects => {
           const flattenedSubjects = _.flatten(allSubjects);
 
-          flattenedSubjects.sort((articleA, articleB) => {
-            articleA.publishedAt = moment(articleA.publishedAt);
-            articleB.publishedAt = moment(articleB.publishedAt);
-
-            return articleA.publishedAt.isBefore(articleB.publishedAt) ? 1 : -1;
-          });
+          this.sortByDate(flattenedSubjects);
 
           return flattenedSubjects;
         })
@@ -54,22 +49,23 @@ export class ArticleService {
 
   get(tag): Observable<any[]> {
     return this.newsApiService.getNewsAbout(tag)
-      .pipe(
+        .pipe(
           map(subjects => {
-            subjects.sort((articleA, articleB) => {
-              articleA.publishedAt = moment(articleA.publishedAt);
-              articleB.publishedAt = moment(articleB.publishedAt);
-
-              return articleA.publishedAt.isBefore(articleB.publishedAt) ? 1 : -1;
-            });
-
+            this.sortByDate(subjects);
 
             return subjects;
           })
         );
   }
 
-  getSaved(): void {
-    // TODO
+  private sortByDate(articles) {
+    articles.sort((articleA, articleB) => {
+      articleA.publishedAt = moment(articleA.publishedAt);
+      articleB.publishedAt = moment(articleB.publishedAt);
+
+      return articleA.publishedAt.isBefore(articleB.publishedAt) ? 1 : -1;
+    });
+
+    return articles;
   }
 }
