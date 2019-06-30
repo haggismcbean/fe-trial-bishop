@@ -16,6 +16,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Docker
 
+Be sure that you have built the latest prod build first with `ng build --prod`
 To run in docker type `docker-compose up`. Navigate to `http://localhost:3000/`
 
 ## Running unit tests
