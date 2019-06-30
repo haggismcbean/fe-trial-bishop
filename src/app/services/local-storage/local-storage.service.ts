@@ -24,7 +24,9 @@ export class LocalStorageService {
               articles = [];
           }
 
-          articles.push(article);
+          if (article) {
+            articles.push(article);
+          }
 
           localStorage.setItem('articles', JSON.stringify(articles));
 

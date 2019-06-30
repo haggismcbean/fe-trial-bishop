@@ -28,6 +28,10 @@ export class TimelineComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.dispatch({
+      type: '[Article] Save article',
+      payload: undefined
+    });
   }
 
 }
